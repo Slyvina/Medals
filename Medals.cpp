@@ -27,37 +27,41 @@
 #include <string.h>
 #include <string>
 
-namespace TrickyMedals {
-	char _Storage[100]{ "Store" };
+namespace Slyvina {
 
-	void Storage(const char* s) {
-		strcpy_s(_Storage, s);
-	}
+	namespace Medals {
+		char _Storage[100]{ "Store" };
 
-	std::string Storage() {
-		return _Storage;
-	}
-	
-	void LoadFromJCR6(std::string main, std::string medalfile) { 
-		auto j{ jcr6::Dir(main) };
-		LoadFromJCR6(&j, medalfile); 
-	}
+		void Storage(const char* s) {
+			strcpy_s(_Storage, s);
+		}
 
+		std::string Storage() {
+			return _Storage;
+		}
+
+		void LoadFromJCR6(std::string main, std::string medalfile) {
+			auto j{ JCR6::JCR6_Dir(main) };
+			LoadFromJCR6(&j, medalfile);
+		}
+
+	}
 }
-
 #ifdef TRUE_MEDALS
 #include "TrueMedals.hpp"
 #include "Medals.hpp"
 #else
-namespace TrickyMedals {
-	void LoadFromInternet(){} // Make sure all points are known
-	int MedalValue(const char* game, const char* medal) { return 0; }
-	int FullScore() { return 0; }
-	void Award(const char* game, const char* medal){}
-	int MaxScore() { return 0;  }
-	int ScorePercent() { return 0; }
-	bool Awarded(const char* game, const char* medal) { return false; }
-	void LoadFromJCR6(jcr6::JT_Dir* main, std::string medalfile) {}
-	void LoadFromNothing() {}
+namespace Slyvina {
+	namespace Medals {
+		//void LoadFromInternet() {} // Make sure all points are known
+		int MedalValue(const char* game, const char* medal) { return 0; }
+		int FullScore() { return 0; }
+		void Award(const char* game, const char* medal) {}
+		int MaxScore() { return 0; }
+		int ScorePercent() { return 0; }
+		bool Awarded(const char* game, const char* medal) { return false; }
+		void LoadFromJCR6(JCR6::JT_Dir main, std::string medalfile) {}
+		void LoadFromNothing() {}
+	}
 }
 #endif
