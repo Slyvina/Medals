@@ -1,8 +1,25 @@
 // Lic:
-// Medals.cpp
-// Medals - Fake File
-// version: 21.11.22
-// Copyright (C) 2021 Jeroen P. Broks
+// Medals/Medals.cpp
+// Version: 23.11.02
+// Copyright (C) 2021, 2023 Jeroen Petrus Broks
+// 
+// ===========================
+// This file is part of a project related to the Phantasar Chronicles or another
+// series or saga which is property of Jeroen P. Broks.
+// This means that it may contain references to a story-line plus characters
+// which are property of Jeroen Broks. These references may only be distributed
+// along with an unmodified version of the game.
+// 
+// As soon as you remove or replace ALL references to the storyline or character
+// references, or any termology specifically set up for the Phantasar universe,
+// or any other univers a story of Jeroen P. Broks is set up for,
+// the restrictions of this file are removed and will automatically become
+// zLib licensed (see below).
+// 
+// Please note that doing so counts as a modification and must be marked as such
+// in accordance to the zLib license.
+// ===========================
+// zLib license terms:
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
 // arising from the use of this software.
@@ -42,7 +59,7 @@ namespace Slyvina {
 
 		void LoadFromJCR6(std::string main, std::string medalfile) {
 			auto j{ JCR6::JCR6_Dir(main) };
-			LoadFromJCR6(&j, medalfile);
+			LoadFromJCR6(j, medalfile);
 		}
 
 	}
@@ -62,6 +79,7 @@ namespace Slyvina {
 		bool Awarded(const char* game, const char* medal) { return false; }
 		void LoadFromJCR6(JCR6::JT_Dir main, std::string medalfile) {}
 		void LoadFromNothing() {}
+		bool Active() { return false; }
 	}
 }
 #endif
