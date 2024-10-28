@@ -50,7 +50,8 @@ namespace Slyvina {
 		char _Storage[100]{ "Store" };
 
 		void Storage(const char* s) {
-			strcpy_s(_Storage, s);
+			//strcpy_s(_Storage, s);
+			SlyvStrCpy(_Storage, s);
 		}
 
 		std::string Storage() {
